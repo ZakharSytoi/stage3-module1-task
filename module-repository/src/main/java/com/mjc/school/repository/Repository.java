@@ -19,11 +19,6 @@ public class Repository {
         return instance;
     }
 
-    public NewsModel create(NewsModel news) {
-        dataSource.getNewsList().add(news);
-        return dataSource.getNewsList().get(dataSource.getNewsList().size() - 1);
-    }
-
     public List<NewsModel> getAll() {
         return dataSource.getNewsList();
     }
@@ -35,6 +30,11 @@ public class Repository {
             }
         }
         return null;
+    }
+
+    public NewsModel create(NewsModel news) {
+        dataSource.getNewsList().add(news);
+        return dataSource.getNewsList().get(dataSource.getNewsList().size() - 1);
     }
 
     public NewsModel update(NewsModel news) {
@@ -49,11 +49,11 @@ public class Repository {
             tmp.setTitle(news.getTitle());
             tmp.setContent(news.getContent());
             tmp.setLastUpdateDate(news.getLastUpdateDate());
-        }else throw new NullPointerException("There is no such id to update");
+        } else throw new NullPointerException("There is no such id to update");
 
         for (NewsModel inst : dataSource.getNewsList()) {
             if (inst.getId().intValue() == news.getId().intValue()) {
-               return inst;
+                return inst;
             }
         }
         return null;
@@ -61,8 +61,8 @@ public class Repository {
 
     public boolean delete(long id) {
 
-        for(int i = 0; i < dataSource.getNewsList().size(); i++){
-            if(dataSource.getNewsList().get(i).getId() == id){
+        for (int i = 0; i < dataSource.getNewsList().size(); i++) {
+            if (dataSource.getNewsList().get(i).getId() == id) {
                 dataSource.getNewsList().remove(i);
                 return true;
             }
