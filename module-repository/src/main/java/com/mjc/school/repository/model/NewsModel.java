@@ -9,7 +9,7 @@ public class NewsModel {
 
     private String content;
 
-    private final LocalDateTime createDate;
+    private LocalDateTime createDate;
 
     private LocalDateTime lastUpdateDate;
 
@@ -64,5 +64,9 @@ public class NewsModel {
 
     public void setAuthorId(Long authorId) {
         this.authorId = authorId;
+    }
+
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
     }
 }
