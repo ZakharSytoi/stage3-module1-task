@@ -7,7 +7,7 @@ import java.util.List;
 
 public class DataSource {
 
-    private List<NewsModel> newsList;
+    private final List<NewsModel> newsList;
     private static DataSource instance;
 
     DataSource(){
