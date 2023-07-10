@@ -3,7 +3,7 @@ package com.mjc.school.repository.model;
 import java.time.LocalDateTime;
 
 public class NewsModel {
-    private final Long id;
+    private  Long id;
 
     private String title;
 
@@ -68,5 +68,9 @@ public class NewsModel {
 
     public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
