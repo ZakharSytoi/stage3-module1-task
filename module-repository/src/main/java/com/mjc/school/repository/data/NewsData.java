@@ -6,6 +6,7 @@ import com.mjc.school.repository.util.DataReader;
 
 import java.io.File;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -14,7 +15,7 @@ public class NewsData {
     private static final String CONTENT_FILE_NAME = "module-repository/src/main/resources/content";
     private static final String NEWS_FILE_NAME = "module-repository/src/main/resources/news";
     private static NewsData instance;
-    private List<NewsModel> newsList;
+    private final List<NewsModel> newsList;
 
     private NewsData() {
         newsList = new ArrayList<>();
@@ -27,7 +28,7 @@ public class NewsData {
                     i,
                     titles.get(rnd.nextInt(titles.size())),
                     content.get(rnd.nextInt(content.size())),
-                    LocalDateTime.now(), LocalDateTime.now(),
+                    LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS),
                     authors.get(rnd.nextInt(authors.size())).getId()));
         }
     }
