@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Repository {
 
-    private DataSource dataSource;
+    private final DataSource dataSource;
 
     private static Repository instance;
 
@@ -33,6 +33,7 @@ public class Repository {
     }
 
     public NewsModel create(NewsModel news) {
+        news.setId(dataSource.getNewsList().get(dataSource.getNewsList().size() - 1).getId()+1);
         dataSource.getNewsList().add(news);
         return dataSource.getNewsList().get(dataSource.getNewsList().size() - 1);
     }
@@ -66,6 +67,14 @@ public class Repository {
                 dataSource.getNewsList().remove(i);
                 return true;
             }
+        }
+        return false;
+    }
+
+    public boolean ifIdExist(long id){
+        for (NewsModel model :
+                dataSource.getNewsList()) {
+            if(model.getId() == id) return true;
         }
         return false;
     }
