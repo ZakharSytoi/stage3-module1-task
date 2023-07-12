@@ -14,14 +14,14 @@ import java.util.List;
 import static com.mjc.school.service.exception.ExceptionConstants.NEWS_ID_DOES_NOT_EXIST;
 
 public class NewsService {
-    public final Repository repository;
+    public final Repository newsRepository;
 
     private static NewsService instance;
 
-    public Validator validator;
+    public Validator newsValidator;
 
     public NewsService() {
-        repository = Repository.getInstance();
+        newsRepository = Repository.getInstance();
     }
 
     public static NewsService getInstance() {
@@ -32,13 +32,13 @@ public class NewsService {
     }
 
     public List<NewsDtoResponse> readAll() {
-        return NewsMapper.INSTANCE.newsListToDtoList(repository.readAll());
+        return NewsMapper.INSTANCE.newsListToDtoList(newsRepository.readAll());
     }
 
     public NewsDtoResponse readById(Long id) {
         Validator.validateNewsId(id);
         validateNewsExistence(id);
-        return NewsMapper.INSTANCE.newsToDto(repository.readById(id));
+        return NewsMapper.INSTANCE.newsToDto(newsRepository.readById(id));
     }
 
     public NewsDtoResponse create(NewsDtoRequest news) {
@@ -46,23 +46,23 @@ public class NewsService {
         NewsModel model = NewsMapper.INSTANCE.dtoToNews(news);
         model.setCreateDate(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         model.setLastUpdateDate(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
-        return NewsMapper.INSTANCE.newsToDto(repository.create(model));
+        return NewsMapper.INSTANCE.newsToDto(newsRepository.create(model));
     }
 
     public NewsDtoResponse update(NewsDtoRequest news) {
         Validator.validateDtoRequest(news);
         NewsModel model = NewsMapper.INSTANCE.dtoToNews(news);
         model.setLastUpdateDate(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
-        return NewsMapper.INSTANCE.newsToDto(repository.update(model));
+        return NewsMapper.INSTANCE.newsToDto(newsRepository.update(model));
     }
 
     public Boolean delete(Long id) {
         validateNewsExistence(id);
-        return repository.delete(id);
+        return newsRepository.delete(id);
     }
 
     private void validateNewsExistence(long id) {
-        if (!repository.ifIdExist(id)) {
+        if (!newsRepository.ifIdExist(id)) {
             throw new ValidatorException(String.format(NEWS_ID_DOES_NOT_EXIST.getCodeMsg(), id));
         }
     }
