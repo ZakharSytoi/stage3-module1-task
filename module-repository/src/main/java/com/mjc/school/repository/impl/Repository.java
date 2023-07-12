@@ -61,10 +61,10 @@ public class Repository {
         return null;
     }
 
-    public Boolean delete(long id) {
+    public Boolean delete(Long id) {
 
         for (int i = 0; i < dataSource.getNewsList().size(); i++) {
-            if (dataSource.getNewsList().get(i).getId() == id) {
+            if (id.equals(dataSource.getNewsList().get(i).getId())) {
                 dataSource.getNewsList().remove(i);
                 return true;
             }
