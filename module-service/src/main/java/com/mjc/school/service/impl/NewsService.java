@@ -14,13 +14,14 @@ import java.util.List;
 import static com.mjc.school.service.exception.ExceptionConstants.NEWS_ID_DOES_NOT_EXIST;
 
 public class NewsService {
-    public final Repository newsRepository;
+    private final Repository newsRepository;
 
     private static NewsService instance;
 
-    public Validator newsValidator;
+    private final Validator newsValidator;
 
     public NewsService() {
+        newsValidator = getInstance().newsValidator;
         newsRepository = Repository.getInstance();
     }
 
