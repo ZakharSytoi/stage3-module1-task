@@ -11,7 +11,7 @@ public class Repository {
 
     private static Repository instance;
 
-    private Repository() {
+    public Repository() {
         dataSource = DataSource.getInstance();
     }
 
@@ -24,7 +24,7 @@ public class Repository {
         return dataSource.getNewsList();
     }
 
-    public NewsModel readById(long id) {
+    public NewsModel readById(Long id) {
         for (NewsModel inst : dataSource.getNewsList()) {
             if (inst.getId().intValue() == id) {
                 return inst;
@@ -72,7 +72,7 @@ public class Repository {
         return false;
     }
 
-    public boolean ifIdExist(long id){
+    public Boolean ifIdExist(long id){
         for (NewsModel model :
                 dataSource.getNewsList()) {
             if(model.getId() == id) return true;
