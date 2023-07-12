@@ -61,7 +61,7 @@ public class Repository {
         return null;
     }
 
-    public boolean delete(long id) {
+    public Boolean delete(long id) {
 
         for (int i = 0; i < dataSource.getNewsList().size(); i++) {
             if (dataSource.getNewsList().get(i).getId() == id) {
