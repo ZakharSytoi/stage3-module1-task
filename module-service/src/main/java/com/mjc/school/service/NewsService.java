@@ -1,6 +1,6 @@
 package com.mjc.school.service;
 
-import com.mjc.school.repository.Repository;
+import com.mjc.school.repository.impl.Repository;
 import com.mjc.school.repository.model.NewsModel;
 import com.mjc.school.service.dtos.NewsDtoRequest;
 import com.mjc.school.service.dtos.NewsDtoResponse;
@@ -30,13 +30,13 @@ public class NewsService {
     }
 
     public List<NewsDtoResponse> getAll() {
-        return NewsMapper.INSTANCE.newsListToDtoList(repository.getAll());
+        return NewsMapper.INSTANCE.newsListToDtoList(repository.readAll());
     }
 
     public NewsDtoResponse getById(long id) {
         Validator.validateNewsId(id);
         validateNewsExistence(id);
-        return NewsMapper.INSTANCE.newsToDto(repository.getById(id));
+        return NewsMapper.INSTANCE.newsToDto(repository.readById(id));
     }
 
     public NewsDtoResponse create(NewsDtoRequest news) {

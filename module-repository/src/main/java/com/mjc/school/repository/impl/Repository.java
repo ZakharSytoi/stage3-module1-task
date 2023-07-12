@@ -1,5 +1,6 @@
-package com.mjc.school.repository;
+package com.mjc.school.repository.impl;
 
+import com.mjc.school.repository.data.DataSource;
 import com.mjc.school.repository.model.NewsModel;
 
 import java.util.List;
@@ -19,11 +20,11 @@ public class Repository {
         return instance;
     }
 
-    public List<NewsModel> getAll() {
+    public List<NewsModel> readAll() {
         return dataSource.getNewsList();
     }
 
-    public NewsModel getById(long id) {
+    public NewsModel readById(long id) {
         for (NewsModel inst : dataSource.getNewsList()) {
             if (inst.getId().intValue() == id) {
                 return inst;
