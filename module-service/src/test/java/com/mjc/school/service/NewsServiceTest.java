@@ -34,10 +34,10 @@ public class NewsServiceTest {
     void getById() {
         NewsDtoRequest news = new NewsDtoRequest(1L, "Test Title", "Test Content", 10L);
         newsService.create(news);
-        Assertions.assertAll(() -> Assertions.assertEquals(21, newsService.readById(21).id()),
-                () -> Assertions.assertEquals(news.title(), newsService.readById(21).title()),
-                () -> Assertions.assertEquals(news.content(), newsService.readById(21).content()),
-                () -> Assertions.assertEquals(news.authorId(), newsService.readById(21).authorId()));
+        Assertions.assertAll(() -> Assertions.assertEquals(21, newsService.readById(21L).id()),
+                () -> Assertions.assertEquals(news.title(), newsService.readById(21L).title()),
+                () -> Assertions.assertEquals(news.content(), newsService.readById(21L).content()),
+                () -> Assertions.assertEquals(news.authorId(), newsService.readById(21L).authorId()));
     }
 
 
@@ -45,10 +45,10 @@ public class NewsServiceTest {
     void update() {
         NewsDtoRequest news = new NewsDtoRequest(10L, "Test Title", "Test Content", 10L);
         newsService.update(news);
-        Assertions.assertAll(() -> Assertions.assertEquals(10, newsService.readById(10).id()),
-                () -> Assertions.assertEquals(news.title(), newsService.readById(10).title()),
-                () -> Assertions.assertEquals(news.content(), newsService.readById(10).content()),
-                () -> Assertions.assertEquals(news.authorId(), newsService.readById(10).authorId()));
+        Assertions.assertAll(() -> Assertions.assertEquals(10, newsService.readById(10L).id()),
+                () -> Assertions.assertEquals(news.title(), newsService.readById(10L).title()),
+                () -> Assertions.assertEquals(news.content(), newsService.readById(10L).content()),
+                () -> Assertions.assertEquals(news.authorId(), newsService.readById(10L).authorId()));
     }
 
     @Test

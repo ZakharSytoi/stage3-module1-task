@@ -14,7 +14,7 @@ import java.util.List;
 import static com.mjc.school.service.exception.ExceptionConstants.NEWS_ID_DOES_NOT_EXIST;
 
 public class NewsService {
-    private final Repository repository;
+    public final Repository repository;
 
     private static NewsService instance;
 
@@ -33,7 +33,7 @@ public class NewsService {
         return NewsMapper.INSTANCE.newsListToDtoList(repository.readAll());
     }
 
-    public NewsDtoResponse readById(long id) {
+    public NewsDtoResponse readById(Long id) {
         Validator.validateNewsId(id);
         validateNewsExistence(id);
         return NewsMapper.INSTANCE.newsToDto(repository.readById(id));
