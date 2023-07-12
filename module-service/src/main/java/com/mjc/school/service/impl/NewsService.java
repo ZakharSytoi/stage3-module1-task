@@ -18,7 +18,9 @@ public class NewsService {
 
     private static NewsService instance;
 
-    private NewsService() {
+    public Validator validator;
+
+    public NewsService() {
         repository = Repository.getInstance();
     }
 
