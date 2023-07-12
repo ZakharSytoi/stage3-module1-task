@@ -1,4 +1,4 @@
-package com.mjc.school.service;
+package com.mjc.school.service.impl;
 
 import com.mjc.school.service.dtos.NewsDtoRequest;
 import com.mjc.school.service.exception.ValidatorException;

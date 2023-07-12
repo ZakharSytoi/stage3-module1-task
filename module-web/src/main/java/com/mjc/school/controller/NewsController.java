@@ -1,6 +1,6 @@
 package com.mjc.school.controller;
 
-import com.mjc.school.service.NewsService;
+import com.mjc.school.service.impl.NewsService;
 import com.mjc.school.service.dtos.NewsDtoRequest;
 import com.mjc.school.service.dtos.NewsDtoResponse;
 
@@ -15,11 +15,11 @@ public class NewsController {
     }
 
     public List<NewsDtoResponse> getAll() {
-        return newsService.getAll();
+        return newsService.readAll();
     }
 
     public NewsDtoResponse getById(long id) {
-        return newsService.getById(id);
+        return newsService.readById(id);
     }
 
     public NewsDtoResponse create(NewsDtoRequest dtoRequest) {

@@ -1,4 +1,4 @@
-package com.mjc.school.service;
+package com.mjc.school.service.impl;
 
 import com.mjc.school.repository.impl.Repository;
 import com.mjc.school.repository.model.NewsModel;
@@ -29,11 +29,11 @@ public class NewsService {
         return instance;
     }
 
-    public List<NewsDtoResponse> getAll() {
+    public List<NewsDtoResponse> readAll() {
         return NewsMapper.INSTANCE.newsListToDtoList(repository.readAll());
     }
 
-    public NewsDtoResponse getById(long id) {
+    public NewsDtoResponse readById(long id) {
         Validator.validateNewsId(id);
         validateNewsExistence(id);
         return NewsMapper.INSTANCE.newsToDto(repository.readById(id));
@@ -54,7 +54,7 @@ public class NewsService {
         return NewsMapper.INSTANCE.newsToDto(repository.update(model));
     }
 
-    public boolean delete(long id) {
+    public Boolean delete(Long id) {
         validateNewsExistence(id);
         return repository.delete(id);
     }
